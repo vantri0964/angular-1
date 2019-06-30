@@ -1,0 +1,129 @@
+<div class="footer">
+    
+    <div class="container-fluid">
+        <hr class="footer-line">
+        <div class="row ">
+            <!-- footer-about -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
+                <div class="footer-widget ">
+                    <div class="footer-title">Thành viên</div>
+                    <ul class="list-unstyled">
+                        <li><a data-toggle="modal" href='#author1'>Lê Văn Trí</a></li>
+                        <li><a data-toggle="modal" href='#author2'>Ung Thị Thùy Oanh</a></li>
+                        <li><a data-toggle="modal" href='#author4'>Trần Thị Cẩm Nga</a></li>
+                        <li><a data-toggle="modal" href='#author3'>Ung Nho Tiên</a></li>
+                        <li><a data-toggle="modal" href='#author5'>Nguyễn Thanh Phúc</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.footer-about -->
+            <!-- footer-links -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
+                <div class="footer-widget ">
+                    <div class="footer-title">Nội Dung</div>
+                    <ul class="list-unstyled">
+                        <li><a routerLink='/man'>Giày Nam</a></li>
+                        <li><a routerLink='/woman'>Giày Nữ</a></li>
+                        <li><a routerLink='/sortASC'>Giá Thấp đến Cao</a></li>
+                        <li><a routerLink='/sortDESC'>Giá Cao đến Thấp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.footer-links -->
+            <!-- footer-links -->
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 ">
+                <div class="footer-widget ">
+                    <div class="footer-title">Social</div>
+                    <ul class="list-unstyled">
+                        <li><a >Twitter</a></li>
+                        <li><a >Google +</a></li>
+                        <li><a >Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.footer-links -->
+            <!-- footer-links -->
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-6 col-6 ">
+                <div class="footer-widget ">
+                    <h3 class="footer-title">Phản Hồi Người Dùng</h3>
+                    <form [formGroup]="commentForm">
+                        <div class="newsletter-form">
+                            <input formControlName='email' matInput name="text" class="form-control" placeholder="Enter Your Email address"
+                                type="text">
+                            <br>
+                            <input formControlName='text' matInput name="text" class="form-control" placeholder="Enter Your comment"
+                                type="text">
+                            <br>
+                            <a data-toggle="modal" href="#comment-footer" (click)="commentUser()" class="btn btn-default btn-sm" type="submit"><img src="../assets/images/send.png" alt=""><i>send</i></a>
+                            <div *ngIf="thanhcong">{{note}}</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.footer-links -->
+            <!-- tiny-footer -->
+        </div>
+        <div class="row ">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center ">
+                <div class="tiny-footer">
+                    <p>Copyright © 2018 | websize by <a href="https://easetemplate.com/downloads/bitcoin-cryptocurrency-website-template-amazing-design "
+                            target="_blank" class="copyrightlink">Team_FlowerShop</a></p>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- Gioi thieu le van tri -->
+    <div *ngFor="let event of events">
+
+        <div class="modal fade" id="{{event.code}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="color: coral">Thông tin cá nhân</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-4 col-xs-8"><img src="../assets/images/{{event.img}}" style="width: 120px;"
+                                class="rounded-circle"></div>
+                        <div class="col-md-8 col-xs-4" style="margin-top: 10px;">
+                            <p>Họ tên: <span>{{event.nameAuthor}}</span></p>
+                            <p>Ngày sinh: <span>{{event.birthday}}</span></p>
+                            <p>Quê quán: <span>{{event.Address}}</span></p>
+                            <p>Lớp: <span>{{event.Class}}</span></p>
+                            <p>Sở thích:<span>{{event.like}}</span></p>
+                            <p>email: <span>{{event.email}}</span></p>
+                            <p>Số điện thoại:<span>{{event.phone}}</span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<!-- start thanks -->
+    <div class="modal fade" id="comment-footer">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color: coral">Thông tin cá nhân</h4>
+                </div>
+                <div class="modal-body">
+                   <p><img src="../assets/images/markfinish.png" alt=""> Cảm ơn bạn đã đánh giá !</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- end thanks -->
+</div>
+
+
+

@@ -1,0 +1,37 @@
+<p style="text-align: center"><a href="" routerLink='/homeadmin' class="btn btn-info"><img src="./assets/images/adminhome.png"
+      alt=""> Admin Home</a></p>
+<hr>
+<h2 style="color: #FF3300;text-align: center"><b>THÔNG TIN SẢN PHẨM</b><br>
+  <a routerLink='/adminInsert' class="btn btn-danger"><img src="./assets/images/iconinsert.png"> Add to product </a></h2>
+<p id="note">{{message}}</p>
+<table class="table">
+  <thead>
+    <tr class="danger">
+      <th>Tên</th>
+      <th>Loại</th>
+      <th>Types</th>
+      <th>Gía</th>
+      <th>img</th>
+      <th>Chi tiết</th>
+      <th>Control</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let event of events | paginate: { itemsPerPage: 3, currentPage: p }">
+    <tr class="success">
+      <td>{{event.name}}</td>
+      <td>{{event.loai}}</td>
+      <td>{{event.types}}</td>
+      <td>{{event.cost}}</td>
+      <td>{{event.img}}</td>
+      <td>{{event.detail}}</td>
+      <td><a class="btn btn-warning" (click)="delete(event._id)">delete</a><a routerLink="/updateProduct/{{event._id}}"
+          class="btn btn-success">update</a></td>
+    </tr>
+  </tbody>
+</table>
+<!-- button phân trang -->
+<div class="col-md-12" style="text-align: center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<!-- end phân trang -->
+<hr>

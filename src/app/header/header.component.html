@@ -1,0 +1,107 @@
+<!--Menu 1-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid  ">
+  <a class="navbar-brand" (click)='homeEvents()' routerLink='/events'><img src="/assets/images/logo2.png" height="50"
+      alt="" class="rounded-circle"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline" #textInput="ngForm" (ngSubmit)="Search(textInput.value)">
+        <input class="form-control mr-sm-2" type="text" name="name" ngModel required placeholder="Search" aria-label="Search">
+        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="submit">
+      </form>
+    </nav>
+    <ul class="navbar-nav">
+      <a class="nav-link" routerLink="/login" *ngIf="!_authService.loggedIn()" routerLinkActive="active"><span *ngIf="!_authService.loggedInAdmin()">Login</span> </a>
+      <a class="nav-link" routerLink="/register" *ngIf="!_authService.loggedIn()" routerLinkActive="active"><span *ngIf="!_authService.loggedInAdmin()">Register</span></a>
+      <a class="nav-link" data-toggle="modal" href='#modal-dangxuat' style="cursor:pointer" *ngIf="_authService.loggedIn()"><span
+          *ngIf='listUser'><img src="../assets/images/user.png" alt=""> {{listUser.fullname}}</span></a>
+      <a class="nav-link"  routerLink="/loginAdmin" *ngIf="!_authService.loggedInAdmin()" routerLinkActive="active"><span *ngIf="!_authService.loggedIn()">Admin</span> </a>
+      <a class="nav-link"  data-toggle="modal"  href="#modal-admin" style="cursor:pointer" *ngIf="_authService.loggedInAdmin()" ><img src="../assets/images/toadmin.png" alt=""></a>
+    </ul>
+
+  </div>
+</nav>
+
+<!-- Menu2 -->
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"> -->
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar sticky-top">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+    <a class="navbar-brand ml-5 " (click)='homeEvents()' routerLink='/events' routerLinkActive="active"><img src="./assets/images/home3.png"
+        alt=""></a>
+    <ul class="navbar-nav mr-auto ml-5 ">
+
+      <li class="nav-item">
+        <a class="nav-link" (click)='man()' routerLinkActive="active">Giày Nam</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)='woman()' routerLinkActive="active">Giày Nữ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/thongtin" routerLinkActive="active">Thông Tin</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Giá
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)='sortDesc()'>Thấp đến Cao</a>
+          <a class="dropdown-item" (click)='sortAsc()'>Cao đến Thấp</a>
+        </div>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav mr-5">
+     <span *ngIf="!_authService.loggedInAdmin()"> <a routerLink='/shopcart'> <img src="./assets/images/cart2.png" class="img-responsive" alt=""> <span *ngIf="_authService.loggedIn()"><b>{{count}}</b></span><span
+          style="color:black"></span></a></span>
+    </ul>
+  </div>
+</nav>
+
+<!-- Thông tin người dùng -->
+<div class="modal fade" id="modal-dangxuat">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+          <div>
+            <ul class="list-group" *ngIf='listUser'>
+              <li class="list-group-item active">Thông Tin Người Dùng</li>
+              <li class="list-group-item">{{listUser.fullname}}</li>
+              <li class="list-group-item">{{listUser.email}}</li>
+              <li class="list-group-item">{{listUser.address}}</li>
+              <li class="list-group-item"><input class="form-control" type="password" value="{{listUser.password}}"
+                  disabled></li>
+            </ul>
+          </div>
+          <div class="mt-2">
+            <a class="btn btn-warning" routerLink='updateuser' data-dismiss="modal">Chỉnh sửa thông tin</a>
+            <a data-dismiss="modal" class="btn btn-info" (click)="_authService.logoutUser()">Đăng Xuất</a>
+            <a class="btn btn-danger" data-dismiss="modal">Đóng</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- to admin -->
+<div *ngIf="_authService.loggedInAdmin()" class="modal fade" id="modal-admin">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+          <div class="mt-2">
+            <a class="btn btn-warning ml-5" routerLink='/homeadmin'  data-dismiss="modal">Admin</a>
+            <a data-dismiss="modal" class="btn btn-info ml-3"  (click)="_authService.logoutUserAdmin()"  data-dismiss="modal">LogoutAdmin</a>
+            <a class="btn btn-danger ml-3" data-dismiss="modal">Đóng</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

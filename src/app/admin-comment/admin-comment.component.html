@@ -1,0 +1,25 @@
+<p style="text-align: center"><a href="" routerLink='/homeadmin' class="btn btn-info"><img src="./assets/images/adminhome.png"
+  alt=""> Admin Home</a></p>
+<hr>
+<div class="row">
+    <div class="mx-auto">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Nội dung</th>
+                <th scope="col">Ngày</th>
+                <th scope="col">Control</th>
+              </tr>
+            </thead>
+            <tbody *ngFor='let a of listcomment'>
+              <tr>
+                <td scope="row">{{a.email}}</td>
+                <td>{{a.text}}</td>
+                <td>{{a.timeComment}}</td>
+                <td><a (click)="delete(a._id)"><img src="../assets/images/dlcart.png" alt=""></a></td>
+              </tr>            
+            </tbody>
+          </table>
+    </div>
+  </div>

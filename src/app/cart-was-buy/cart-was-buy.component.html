@@ -1,0 +1,29 @@
+<div class="row">
+  <h2>Sản phẩm đã mua</h2>
+  <table class="table table-light">
+    <tr>
+      <th scope="col">Images</th>
+      <th scope="col">Ngày đặt hàng</th>
+      <th scope="col">Tên sản phẩm</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">giá</th>
+      <th scope="col">Tổng cộng</th>
+      <th scope="col">Trạng thái</th>
+      <th scope="col">Icon</th>
+    </tr>
+    <tr *ngFor='let cart of eventsBuy'>
+      <td><img style="max-width: 100px;" src="../assets/images/{{cart.img}}" class="img-thumbnail" alt=""></td>
+      <td>{{cart.crtime | date:'medium'}}</td>
+      <td>{{cart.namesp}}</td>
+      <td>{{cart.soluong}}</td>
+      <td>{{cart.costsp}}</td>
+      <td>{{cart.sumcost}}</td>
+      <td><i>{{cart.trangthai}}</i></td>
+      <td *ngIf='cart.confirm ==2 '><img src="../assets/images/dagiao1.png" alt=""></td>
+      <td *ngIf='cart.confirm== 4'><img src="../assets/images/vanchuyen.png" alt=""></td>
+      <td *ngIf='cart.confirm==3'><img src="../assets/images/dlcart.png" alt=""></td>
+      <td *ngIf='cart.confirm== 1' (click)='huy(cart._id)' class="btn btn-danger">Hủy</td>
+      
+    </tr>
+  </table>
+</div>

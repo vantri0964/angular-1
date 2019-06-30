@@ -1,0 +1,98 @@
+<p style="text-align: center"><a href="" routerLink='/homeadmin' class="btn btn-info"><img src="./assets/images/adminhome.png"
+      alt=""> Admin Home</a></p>
+<hr>
+<div class="row">
+
+  <div class=" col-md-4">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Hình ảnh</th>
+          <th scope="col">Control</th>
+        </tr>
+      </thead>
+      <tbody *ngFor='let a of carouselActive'>
+        <tr>
+          <th scope="row"><img src="../assets/images/{{a.img}}" alt="" style="max-width: 200px"></th>
+          <td><a (click)='delete(a._id)'><img src="../assets/images/dlcart.png" alt=""></a></td>
+        </tr>
+
+      </tbody>
+      <tbody *ngFor='let a of listslider'>
+        <tr>
+          <th scope="row"><img src="../assets/images/{{a.img}}" alt="" style="max-width: 200px"></th>
+          <td><a (click)='delete(a._id)'><img src="../assets/images/dlcart.png" alt=""></a></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-8">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Hình ảnh</th>
+          <th scope="col">Tiêu đề</th>
+          <th scope="col">Chi tiết</th>
+          <th scope="col">Control</th>
+          <th scope="col">choose</th>
+        </tr>
+      </thead>
+      <tbody *ngFor='let a of danhsachslider'>
+        <tr>
+          <th scope="row"><img src="../assets/images/{{a.img}}" alt="" style="max-width: 200px"></th>
+          <td>{{a.title}}</td>
+          <td>{{a.description}}</td>
+          <td><a (click)='deleteList(a._id)'><img src="../assets/images/dlcart.png" alt=""></a><span><a routerLink="/updateslider/{{a._id}}"><img
+                  src="../assets/images/update.png" alt=""></a></span></td>
+          <td>
+            <div class="form-check">
+              <input [disabled]='check' type="checkbox" class="form-check-input" id="exampleCheck1" (click)=insert(a.img,a.title,a.description)>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <a data-toggle="modal" href='#modal-slider'><img src="../assets/images/insertslider.png" alt=""></a>
+    </div>
+  </div>
+</div>
+<!-- insert -->
+<div class="modal fade" id="modal-slider">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+          <form class="form-horizontal form-insert-1">
+
+
+            <!-- <div class="form-group">
+              <input type="text" [(ngModel)]="insertProduct.img" name="img" class="form-control" id="cost" placeholder="Ảnh(*)">
+            </div> -->
+            <div class="form-group">
+                <label for="hinhanh">Hình ảnh</label>
+              <input type="file" (change)="onFileChanged($event)"   class="form-control-file" id="hinhanh">
+            </div>
+
+            <div class="form-group">
+              <input type="text" [(ngModel)]="insertProduct.title" name="title" class="form-control" id="img"
+                placeholder="Nhập Tiêu Đề (*)">
+            </div>
+
+            <div class="form-group">
+              <input type="text" [(ngModel)]="insertProduct.description" name="description" class="form-control" id=""
+                placeholder="Nhập Miêu Tả (*)">
+            </div>
+
+            <button data-dismiss="modal" type="submit" class="btn btn-warning" (click)="insertList()">Insert</button>
+            <button type="reset" class="btn btn-info">Reset</button>
+          </form>
+          <div class="mt-2">
+            <a href="" class="btn btn-danger" data-dismiss="modal">OK</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

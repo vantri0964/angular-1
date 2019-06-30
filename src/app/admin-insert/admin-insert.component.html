@@ -1,0 +1,38 @@
+<div class="col-md-12">
+
+  <div class="col-md-4 form-insert py-2 mx-auto">
+    <LEgend><b><i>INSERT SHOE</i></b></LEgend>
+    <form class="form-horizontal form-insert-1">
+
+      <div class="form-group">
+        <input type="email" [(ngModel)]="insertProduct.name" name="name" class="form-control" id="email" placeholder="input name (*)"
+          required>
+      </div>
+
+      <div class="form-group">
+        <input type="text" [(ngModel)]="insertProduct.loai" name="loai" class="form-control" id="pwd" placeholder="input loai(nam-nu) (*)">
+      </div>
+
+      <div class="form-group">
+        <input type="text" [(ngModel)]="insertProduct.types" name="types" class="form-control" id="loai" placeholder="input kieu (*)">
+      </div>
+
+      <div class="form-group">
+        <input type="text" [(ngModel)]="insertProduct.cost" name="cost" class="form-control" id="cost" placeholder="input giá (*)">
+      </div>
+
+    
+      <div class="form-group">
+        <input type="text" [(ngModel)]="insertProduct.detail" name="detail" class="form-control" id="detail"
+          placeholder="input chi tiết (*)">
+      </div>
+      <div class="form-group">
+          <label for="hinhanh">Hình ảnh</label>
+        <input type="file" (change)="onFileChanged($event)"   class="form-control-file" id="hinhanh">
+      </div>
+      <button type="submit" class="btn btn-warning" (click)="insert()">Insert</button>
+      <button type="reset" class="btn btn-info">Reset</button>
+      <a href="" class="btn btn-outline-secondary" routerLink='/admin'>Back</a>
+    </form>
+  </div>
+</div>

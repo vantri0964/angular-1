@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" routerLink='/quanlyproduct'>Sản phẩm đang chờ xác nhận</li>
+      <li class="list-group-item" routerLink='/quanlysanphamdanggiao'>sản phẩm đang giao</li>
+      <li class="list-group-item" routerLink='/quanlysanphamdamua'>sản phẩm đã giao</li>
+      <li class="list-group-item" routerLink='/quanlysanphamdahuy'>sản phẩm đã hủy</li>
+      <li class="list-group-item" routerLink='/homeadmin'>admin home</li>
+      <li  class="list-group-item"></li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <h2>Sản phẩm đang chờ giao</h2>
+      <table class="table table-light">
+        <tr>
+          <th scope="col">Tên Thành viên</th>
+          <th scope="col">Images</th>
+          <th scope="col">Ngày đặt hàng</th>
+          <th scope="col">Tên sản phẩm</th>
+          <th scope="col">Số lượng</th>
+          <th scope="col">Tổng cộng</th>
+          <th scope="col">Trạng Thái</th>
+          <th scope="col">Xác nhận</th>
+        </tr>
+        <tr *ngFor='let cart of eventsBuy'>
+          <td>{{cart.nameuser}}</td>
+          <td><img style="max-width: 100px;" src="../assets/images/{{cart.img}}" class="img-thumbnail" alt=""></td>
+          <td>{{cart.crtime |date:'medium'}}</td>
+          <td>{{cart.namesp}}</td>
+          <td>{{cart.soluong}}</td>
+          <td>{{cart.sumcost}}</td>
+          <td><i>{{cart.trangthai}}</i></td>
+          <td ><a  class="btn btn-info" (click)='xacnhan(cart._id)'>xác nhận</a>
+              <a class="btn btn-danger" (click)='huy(cart._id)'>Hủy</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

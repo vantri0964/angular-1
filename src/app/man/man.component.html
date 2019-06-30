@@ -1,0 +1,26 @@
+<app-slider></app-slider>
+  <!-- noi dung -->
+<h2><i><b>Product</b></i></h2>
+<hr>
+<div class="row mt-5">
+
+  <div class="col-md-4 mb-3" *ngFor="let event of events | paginate: { itemsPerPage: 6, currentPage: p }">
+    <div class="card text-center">
+      <div class="card-body">
+        <img src="./assets/images/{{event.img}}" class="img-fluid" alt="">
+        <h5 class="card-title">{{event.name}}</h5>
+        <p class="card-text">Giày: {{event.loai}}<span>--Giá: {{event.cost}}<sup>đ</sup></span></p>
+      </div>
+      <div class="card-footer text-muted">
+        <a href="" *ngIf="_authService.loggedIn()" class="btn btn-success">Thêm vào giỏ hàng</a>
+        <a href="" class="btn btn-primary"  routerLink="/detailshoe/{{event._id}}">Chi tiết</a>
+      </div>
+    </div>
+  </div>
+  <!-- button phân trang -->
+<div class="col-md-12" style="text-align: center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<!-- end phân trang -->
+</div>
+  

@@ -1,0 +1,51 @@
+
+<app-slider></app-slider>
+<!-- noi dung -->
+<div class="content-events">
+  <h2><i><b>Product</b></i></h2>
+  <hr>
+  <div class="row mt-5">
+    <div class="col-md-4 mb-3" *ngFor="let event of events | paginate: { itemsPerPage: 6, currentPage: p }">
+      <div class="card text-center">
+        <div class="card-body">
+          <img src="./assets/images/{{event.img}}" class="img-fluid" alt="">
+          <h5 class="card-title">{{event.name}}</h5>
+          <p class="card-text"><b>Giày:</b><i>{{event.loai}}</i> <span class="ml-2"><b>Giá:</b><i>{{event.cost}}</i> <sup>đ</sup></span></p>
+        </div>
+        <div class="card-footer text-muted">
+          <a data-toggle="modal" href='#modal-them' *ngIf="_authService.loggedIn()" class="btn btn-success" (click)="themhang(event.name,event.cost,event.img,event._id)"><span><img src="../assets/images/add.png" alt=""></span> Thêm
+            vào giỏ hàng</a>
+          <a  class="btn btn-primary ml-1" routerLink="/detailshoe/{{event._id}}"><span><img src="../assets/images/detail.png" alt=""></span> Chi tiết</a>
+        </div>
+      </div>
+    </div>
+    <!-- button phân trang -->
+    <div class="col-md-12" style="text-align: center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <!-- end phân trang -->
+  </div>
+</div>
+<app-shoes-hight></app-shoes-hight>
+
+<div class="modal fade" id="modal-them">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="model-header">
+        <h5> Thông Báo</h5>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+          <div>
+              {{message}} <span><img src="../assets/images/markfinish.png" alt=""></span>
+
+          </div>
+          <div class="mt-2">
+          
+            <a href="" class="btn btn-danger" data-dismiss="modal">OK</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

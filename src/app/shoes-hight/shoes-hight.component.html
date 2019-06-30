@@ -1,0 +1,33 @@
+<hr>
+<div class="row">
+    <div class="col-md-6">
+      <div class="card text-center" *ngFor="let a of prohight">
+        <div class="card-header" style="background-color: coral">
+          <h2>Sản Phẩm Hấp Dẫn Nhất</h2>
+        </div>
+        <div class="card-body">
+          <img src="./assets/images/{{a.img}}" style="max-height: 150px" class="img-fluid" alt="">
+          <h5 class="card-title"></h5>
+          <p class="card-text"><span class="mr-3"><b>Giày: </b>{{a.name}}</span><span><b> Giá: </b>{{a.cost}}<sup>đ</sup></span></p>
+        </div>
+        <div class="card-footer text-muted">
+          <a href="" class="btn btn-outline-danger" routerLink="/detailshoe/{{a._id}}">Chi tiết</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-center" *ngFor="let a of endproduct">
+        <div class="card-header" style="background-color: coral">
+          <h2 >Sản Phẩm Mới Nhất</h2>
+        </div>
+        <div class="card-body">
+          <img src="./assets/images/{{a.img}}" style="max-height: 150px" class="img-fluid" alt="">
+          <h5 class="card-title"></h5>
+          <p class="card-text"><span class="mr-3"><b>Giày: </b>{{a.name}}</span><span><b> Giá: </b>{{a.cost}}<sup>đ</sup></span></p>
+        </div>
+        <div class="card-footer text-muted">
+          <a href="" class="btn btn-outline-danger" routerLink="/detailshoe/{{a._id}}">Chi tiết</a>
+        </div>
+      </div>
+      </div>
+</div>

@@ -1,0 +1,24 @@
+<!-- update -->
+          <div class="col-md-12 col-xs-12" >
+            <div class="col-md-4 mx-auto mt-3" *ngIf="updateslider">
+               
+              <form class="form-horizontal " >
+            
+                  <div class="form-group">
+                    <input type="text" [(ngModel)]="updateslider.img" name="img" class="form-control" id="img">
+                  </div>
+            
+                  <div class="form-group">
+                    <input type="text" [(ngModel)]="updateslider.title" name="title" class="form-control" id="title" placeholder="Nhập Tiêu Đề (*)">
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="text" [(ngModel)]="updateslider.description" name="description" class="form-control" id=""
+                      placeholder="Nhập Miêu Tả (*)">
+                  </div>
+            
+                  <button data-dismiss="modal" type="submit" class="btn btn-warning" (click)="update()">Update</button>
+                  <a  routerLink='/adminslider' class="btn btn-info">Back</a>
+                </form>
+          </div>
+          </div>

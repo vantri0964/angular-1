@@ -1,0 +1,33 @@
+<p style="text-align: center"><a href="" routerLink='/homeadmin' class="btn btn-info"><img src="./assets/images/adminhome.png"
+      alt=""> Admin Home</a></p>
+<hr>
+<h2 style="color: #FF3300;text-align: center"><b>THÔNG TIN NGƯỜI DÙNG</b></h2>
+<p id="note">{{message}}</p>
+<table class="table">
+  <thead>
+    <tr class="danger">
+      <th>Email</th>
+      <th>PassWord</th>
+      <th>FullName</th>
+      <th>Address</th>
+      <th>Control</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let event of events | paginate: { itemsPerPage: 3, currentPage: p }">
+
+    <tr class="success">
+      <td>{{event.email}}</td>
+      <td>{{event.password}}</td>
+      <td>{{event.fullname}}</td>
+      <td>{{event.address}}</td>
+      <td><a class="btn btn-warning" (click)="delete(event._id)">delete</a><a routerLink="/updateuser/{{event._id}}"
+          class="btn btn-success">update</a></td>
+    </tr>
+
+  </tbody>
+</table>
+<!-- button phân trang -->
+<div class="col-md-12" style="text-align: center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<!-- end phân trang -->

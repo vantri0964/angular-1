@@ -1,0 +1,139 @@
+<div class="row">
+
+  <div class="col-md-8 col-xs-8 mt-3">
+
+    <table class="table table-dark">
+      <tr>
+        <th scope="col">Hình ảnh</th>
+        <th scope="col">Ngày đặt hàng</th>
+        <th scope="col">Tên sản phẩm</th>
+        <th scope="col">Số lượng</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Tổng cộng</th>
+
+        <th scope="col">Delete</th>
+      </tr>
+      <tr>
+        <th colspan="6"> <p *ngIf='note'>Giỏ Hàng Trống !</p></th>
+      </tr>
+      <tr *ngFor='let cart of events'>
+        <td><img style="max-width: 100px;" src="../assets/images/{{cart.img}}" class="img-thumbnail" alt=""></td>
+        <td>{{cart.crtime |date:'medium'}}</td>
+        <td>{{cart.namesp}}</td>
+        <td>{{cart.soluong}}</td>
+        <td>{{cart.costsp}} <sup>đ</sup></td>
+        <td>{{cart.sumcost}}</td>
+        <td><a (click)="deletecart(cart._id)"><img src="../assets/images/dlcart.png" alt=""></a></td>
+      </tr>
+    </table>
+    <a routerLink='/cartwasbuy' class="btn btn-warning">Lịch sử mua hàng</a>
+    <a routerLink='/events' class="btn btn-info ml-2">Tiếp Tục Mua Hàng</a>
+  </div>
+  <div class="col-md-4 col-xs-4 mt-3">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" colspan="2">Thông tin khách hàng</th>
+
+        </tr>
+      </thead>
+      <tbody *ngIf="listUser">
+        <tr>
+          <th scope="row">Tên</th>
+          <td>{{listUser.fullname}}</td>
+
+        </tr>
+        <tr>
+          <th scope="row">Địa chỉ giao hàng</th>
+          <td>{{listUser.address}}</td>
+
+        </tr>
+        <tr>
+          <td colspan="2"><a data-toggle="modal" href='#modal-id' class="btn btn-info"><span><img src="../assets/images/change.png" alt=""></span> Chỉnh sửa địa chỉ giao hàng</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="col-md-9"></div>
+      <div class="ml-1">
+        <p><i>Tổng tiền: <span>{{sumCost}}</span><sup>đ</sup></i></p>
+        <p><i>Phí vat: <span>Chưa</span></i></p>
+        <b> <i> Thanh toán: <span>{{sumCost}}</span><sup>đ</sup></i></b>
+        <br>
+        <button [disabled]='note' class="btn btn-warning" data-toggle="modal" href="#modal-xacnhan">Xác nhận mua hàng</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="modal fade" id="modal-id">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Address</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+      </div>
+      <div class="modal-body">
+        <div class="col-md-8 col-xs-4">
+          <form class="form-horizontal form-insert-1">
+            <div class="form-group">
+              Tên: <input type="text" class="form-control" disabled [ngModel]="listUser.fullname" name="fullname"
+                required>
+            </div>
+            <div class="form-group">
+              Địa chỉ: <input type="text" class="form-control" [(ngModel)]="listUser.address" name="address" required>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" (click)="update()" data-dismiss="modal">Xác nhận</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Xác nhận -->
+<div class="modal fade" id="modal-xacnhan">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Xác Nhận Đơn Hàng</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+          <ul>
+            <li *ngIf="listUser">Khách hàng: <span>{{listUser.fullname}}</span></li>
+            <li>Số Lượng đơn hàng: {{count}}</li>
+            <li>Tổng tiền cần thanh toán: {{sumCost}} <sup>đ</sup></li>
+            <li *ngIf="listUser">Địa chỉ giao hàng: {{listUser.address}}</li>
+          </ul>
+          <div>
+            <table>
+              <tr>
+                <th>Xác nhận bên bán</th>
+                <th>Xác nhận bên mua</th>
+              </tr>
+              <tr>
+                <td>Team 5*</td>
+                <td *ngIf="listUser">{{listUser.fullname}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a  class="btn btn-success" (click)="confirm()" data-dismiss="modal">Xác Nhận</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

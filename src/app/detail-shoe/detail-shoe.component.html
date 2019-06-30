@@ -1,0 +1,77 @@
+<div class="col-md-12 row mb-3 mt-5 ">
+
+  <div class="card col-md-5" style="width: 27rem;" style="text-align: center;">
+    <div class="card-img-top">
+      <img src="../assets/images/{{detail.img}}" class="img-responsive" alt="">
+    </div>
+    <div class="card-body">
+      <p class="card-text"> <b><span style="color: #CC0000">{{detail.name}}</span><br /><span style="color: #00EE00">Kiểu:{{detail.types}}</span><br /><span
+            style="color: #FF9933">Giá:{{detail.cost}}<sup>đ</sup></span> </b></p>
+      <div class="col-md-5">
+        <b>Số lượng:<input (keyup)="onKey($event)" (click)="onKey($event)" name="so_luong" type="number" class="form-control"></b>
+      </div>
+    </div>
+  </div>
+
+
+  <div class=" text-center col-md-5 card">
+    <div class="card-header">
+      <h3><b><span><img src="../assets/images/detail.png" alt=""></span> Chi Tiết</b></h3>
+    </div>
+    <div class="card-body">
+      <div>
+        <p class="card-text">{{detail.detail}}</p>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <a data-toggle="modal" href='{{add}}' ng class="btn btn-success mr-2" (click)="themhang(detail.name,detail.cost,detail.img,detail._id)"><span><img src="../assets/images/add.png" alt=""></span> Thêm vào giỏ hàng</a><a
+        class="btn btn-warning" data-toggle="modal" href='{{add}}' (click)="muahang(detail.name,detail.cost,detail.img,detail._id)"><span><img src="../assets/images/buy.png" alt=""></span> Mua hàng</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- thong bao -->
+<div class="modal fade" id="modal-them">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <p><b>Thêm Vào Giỏ Hàng</b></p>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+          <div>
+             <p> {{message}} </p>
+             <p>{{messageSL}}</p>
+          </div>
+          <div class="mt-2">
+          
+            <a href="" class="btn btn-danger" data-dismiss="modal">OK</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- mua hang -->
+<div class="modal fade" id="modal-mua">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <p><b>Xác Nhận Mua Hàng</b></p>
+        </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+          <div>
+             <p> {{message}} </p>
+             <p>{{messageSL}}</p>
+          </div>
+          <div class="mt-2">
+          
+            <a href="" class="btn btn-danger" data-dismiss="modal">OK</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

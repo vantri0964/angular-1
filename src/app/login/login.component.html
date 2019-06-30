@@ -1,0 +1,46 @@
+<!-- <div class="" id="loginuser"> -->
+<!-- <div class="row "> -->
+<div class="col-md-10 mx-auto row">
+  <!-- <span class="anchor" id="formLogin"></span> -->
+
+  <!-- form card login -->
+  <div class="card mt-5 rounded-2 ml-3" style="max-width:65%">
+    <!-- <div class="card-vbody"> -->
+    <img src="../assets/images/loginuser.jpg" class="img-fluid" alt="" style="max-width:100%;max-height: 100%">
+    <!-- </div> -->
+  </div>
+  <div class="card rounded-2 mt-5">
+    <div class="card-header">
+      <h3 class="mb-0">Login</h3>
+    </div>
+    <div class="card-body">
+      <form class="form" [formGroup]='loginForm'>
+        <div class="form-group">
+          <label for="uname1">Username (*)</label>
+          <input placeholder="Nhập email của bạn" formControlName='email' matInput type="text" class="form-control rounded-2"
+            [(ngModel)]="loginUserData.email" name="email" required>
+          <br>
+          <span class="col alert alert-danger" *ngIf="isValid('email')">Username cannot be blank</span>
+        </div>
+        <div class="form-group">
+          <label>Password (*)</label>
+          <input placeholder="Nhập password của bạn" formControlName='password' matInput type="password" class="form-control rounded-2"
+            [(ngModel)]="loginUserData.password" name="password" required>
+          <br>
+          <span class="col alert alert-danger" *ngIf="isValid('password')">Password cannot be blank</span>
+        </div>
+        <p class="alert alert-danger" *ngIf="note1">{{note}}</p>
+        <button type="button" (click)="loginUser()" class="btn btn-success float-right">Login</button>
+      </form>
+    </div>
+    <!--/card-block-->
+  </div>
+
+
+</div>
+
+<!-- /form card login -->
+
+<!-- </div> -->
+<!-- 
+  </div> -->

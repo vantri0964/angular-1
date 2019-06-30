@@ -1,0 +1,35 @@
+<div class="col-md-12">
+
+  <div class="col-md-4 col-md-offset-4 form-insert" *ngIf="insertProduct">
+    <LEgend><b><i>UPDATE {{insertProduct._id}}</i></b></LEgend>
+    <form class="form-horizontal form-insert-1">
+
+      <div class="form-group">
+        <input type="email" [(ngModel)]="insertProduct.name" name="name" class="form-control" id="email" placeholder="input name (*)"
+          required>
+      </div>
+
+      <div class="form-group">
+        <input type="text" [(ngModel)]="insertProduct.loai" name="loai" class="form-control" id="pwd" placeholder="input loai(nam-nu) (*)">
+      </div>
+
+      <div class="form-group">
+        <input type="text" [(ngModel)]="insertProduct.types" name="types" class="form-control" id="loai" placeholder="input kieu (*)">
+      </div>
+
+      <div class="form-group">
+        <input type="text" [(ngModel)]="insertProduct.cost" name="cost" class="form-control" id="cost" placeholder="input giá (*)">
+      </div>
+
+      <div class="form-group">
+        <input type="text" [(ngModel)]="insertProduct.img" name="img" class="form-control" id="img" placeholder="input link ảnh (*)">
+      </div>
+
+      <div class="form-group">
+        <textarea class="form-control" id="" cols="30" [(ngModel)]="insertProduct.detail" name="detail" rows="5"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-default" (click)="update()">confirm</button>
+    </form>
+  </div>
+</div>
